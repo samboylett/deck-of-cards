@@ -22,6 +22,11 @@ export default {
 
 const Template: Story<CardProps> = (args) => <Card {...args} />;
 
+export const BackOfCard = Template.bind({});
+BackOfCard.args = {
+    card: null,
+};
+
 export const AceOfSpades = Template.bind({});
 AceOfSpades.args = {
     card: {

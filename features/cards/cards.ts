@@ -9,6 +9,8 @@ interface SuitOption {
     cardSymbolsStart: Number
 }
 
+export const backOfCardSymbol = 0x1F0A0;
+
 export function getSuits(): Array<SuitOption> {
     return [
         {
@@ -45,7 +47,17 @@ export function getSuitOptions(suit: CardSuit): SuitOption {
     return getSuits().find(({ name }) => name === suit);
 }
 
+export function getCardColor(card: Card|null) {
+    return card
+        ? getSuitOptions(card.suit).color
+        : '#444'
+}
+
 export function getCardSymbol(card: Card): Number {
+    if (!card) {
+        return backOfCardSymbol.toString(16)
+    }
+
     let valueIndex = isNaN(parseInt(card.value))
         ? CardValue[card.value]
         : card.value;

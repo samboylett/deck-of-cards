@@ -1,33 +1,9 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-enum Suit {
-    Hearts,
-    Clubs,
-    Diamonds,
-    Spades,
-}
-
-enum Value {
-    Two,
-    Three,
-    Four,
-    Five,
-    Six,
-    Seven,
-    Eight,
-    Nine,
-    Ten,
-    Jack,
-    Queen,
-    King,
-    Ace,
-}
-
-type Card = {
-    suit: Suit
-    value: Value
-}
+import type Card from '../../types/Card'
+import CardSuit from '../../types/CardSuit'
+import CardValue from '../../types/CardValue'
 
 type Data = {
     cards: Array<Card>
@@ -35,10 +11,10 @@ type Data = {
 
 export default (req: NextApiRequest, res: NextApiResponse<Data>) => {
     res.status(200).json({
-        cards: Object.keys(Value)
+        cards: Object.keys(CardValue)
             .filter(e => isNaN(parseInt(e)))
             .flatMap(value => {
-                return Object.keys(Suit)
+                return Object.keys(CardValue)
                     .filter(e => isNaN(parseInt(e)))
                     .map(suit => ({
                         value,

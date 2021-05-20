@@ -1,4 +1,5 @@
 enum CardValue {
+    Ace,
     Two,
     Three,
     Four,
@@ -11,7 +12,6 @@ enum CardValue {
     Jack,
     Queen,
     King,
-    Ace,
 }
 
 export default CardValue

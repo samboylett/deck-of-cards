@@ -11,6 +11,8 @@ export interface DeckTemplateProps {
 
 interface DeckTemplateState {
     deck: Array<CardType>
+    hand: Array<CardType>
+    revealedDeck: Boolean
 }
 
 const Layout = styled.div`
@@ -23,6 +25,7 @@ export class DeckTemplate extends React.Component<DeckTemplateProps, DeckTemplat
 
         this.state = {
             deck: props.initialDeck,
+            hand: [],
             revealedDeck: false,
         }
     }
@@ -39,16 +42,36 @@ export class DeckTemplate extends React.Component<DeckTemplateProps, DeckTemplat
         })
     }
 
-    get canShuffle() {
+    draw = () => {
+        this.setState({
+            hand: [
+                ...this.state.hand,
+                this.state.deck.slice(-1)[0],
+            ],
+
+            deck: this.state.deck.slice(0, -1),
+        })
+    }
+
+    reset = () => {
+        this.setState({
+            deck: this.props.initialDeck,
+            hand: [],
+        })
+    }
+
+    get canShuffle(): Boolean {
         return this.state.deck.length === 52
+    }
+
+    get canDraw(): Boolean {
+        return Boolean(this.state.deck.length)
     }
 
     render() {
         return (
             <Layout>
                 <h1>Deck of Cards</h1>
-
-                <h2>Your deck</h2>
 
                 <button onClick={ this.toggleReveal }>
                     { this.state.revealedDeck ? 'Hide' : 'Reveal' } Deck
@@ -61,9 +84,32 @@ export class DeckTemplate extends React.Component<DeckTemplateProps, DeckTemplat
                     Shuffle
                 </button>
 
+                <button
+                    disabled={ !this.canDraw }
+                    onClick={ this.canDraw && this.draw }
+                >
+                    Draw
+                </button>
+
+                <button
+                    onClick={ this.reset }
+                >
+                    Reset
+                </button>
+
+                <h2>Your deck</h2>
+
                 <Cards
                     cards={ this.state.deck }
                     revealed={ this.state.revealedDeck }
+                    overlap="1.5%"
+                />
+
+                <h2>Your Hand</h2>
+
+                <Cards
+                    cards={ this.state.hand }
+                    revealed={ true }
                     overlap="1.5%"
                 />
             </Layout>

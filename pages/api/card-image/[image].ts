@@ -11,7 +11,7 @@ const images = requireImages.keys().map(key => ({
 
 const IMAGES_PATH = 'node_modules/svg-cards/png/2x'
 
-export default async function (req: NextApiRequest, res: NextApiResponse<string>) {
+export default async function (req: NextApiRequest, res: NextApiResponse<Buffer|string>) {
     const requestedImage = req.query.image.toString()
     const image = images.find(({ name }) => name === requestedImage)
 

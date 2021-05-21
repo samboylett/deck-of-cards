@@ -8,6 +8,20 @@ export interface Card3DProps {
     revealed: Boolean
 }
 
+const CardFace = styled.div`
+    transform-style: preserve-3d;
+    backface-visibility: visible;
+
+    &:last-child {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        transform: rotateY(180deg);
+    }
+`
+
 const Card3DContainer = styled.div`
     position: relative;
     transform: rotateY(${ ({ revealed }) => revealed ? '0' : '180'}deg);
@@ -16,32 +30,18 @@ const Card3DContainer = styled.div`
     backface-visibility: visible;
     display: inline-block;
     will-change: transform;
-
-    svg {
-        transform-style: preserve-3d;
-        backface-visibility: visible;
-
-        &:first-child {
-            z-index: 1;
-        }
-
-        &:last-child {
-            z-index: 1;
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            transform: rotateY(180deg);
-        }
-    }
 `
 
 export function Card3D({ card, revealed = false }: Card3DProps) {
     return (
         <Card3DContainer revealed={ revealed }>
-            <Card card={ card } />
-            <Card card={ null } />
+            <CardFace>
+                <Card card={ card } />
+            </CardFace>
+
+            <CardFace>
+                <Card card={ null } />
+            </CardFace>
         </Card3DContainer>
     );
 }

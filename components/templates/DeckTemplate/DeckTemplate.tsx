@@ -79,14 +79,14 @@ export class DeckTemplate extends React.Component<DeckTemplateProps, DeckTemplat
 
                 <button
                     disabled={ !this.canShuffle }
-                    onClick={ this.canShuffle && this.shuffle }
+                    onClick={ this.shuffle }
                 >
                     Shuffle
                 </button>
 
                 <button
                     disabled={ !this.canDraw }
-                    onClick={ this.canDraw && this.draw }
+                    onClick={ this.draw }
                 >
                     Draw
                 </button>

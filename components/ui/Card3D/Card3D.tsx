@@ -10,26 +10,26 @@ export interface Card3DProps {
 
 const CardFace = styled.div`
     transform-style: preserve-3d;
-    backface-visibility: visible;
+    backface-visibility: hidden;
+    grid-column: 1;
+    grid-row: 1;
 
     &:last-child {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
         transform: rotateY(180deg);
     }
 `
 
 const Card3DContainer = styled.div`
-    position: relative;
-    transform: rotateY(${ ({ revealed }) => revealed ? '0' : '180'}deg);
+    display: inline-grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+
+    transform: translateZ(0) rotateY(${ ({ revealed }) => revealed ? '0' : '180'}deg);
     transition: transform .7s ease;
     transform-style: preserve-3d;
     backface-visibility: visible;
-    display: inline-block;
     will-change: transform;
+    perspective: 100px;
 `
 
 export function Card3D({ card, revealed = false }: Card3DProps) {

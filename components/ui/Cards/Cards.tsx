@@ -17,6 +17,7 @@ const CardsContainer = styled.div`
 const CardContainer = styled.div`
     width: ${ ({ overlap }) => overlap || '5px' };
     overflow: visible;
+    z-index: 1;
 `
 
 export function Cards({ cards, overlap, revealed }: CardsProps) {

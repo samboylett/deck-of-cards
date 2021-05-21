@@ -1,8 +1,9 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { mount } from 'enzyme'
 
 import { DeckTemplate } from './DeckTemplate'
 import { Cards } from '../../ui/Cards/Cards'
+import { Button } from 'semantic-ui-react'
 import { getDeck } from '../../../helpers/cards/cards'
 
 describe('DeckTemplate', () => {
@@ -10,15 +11,15 @@ describe('DeckTemplate', () => {
 
     const deck = () => wrapper.find(Cards).get(0)
     const hand = () => wrapper.find(Cards).get(1)
-    const revealButton = () => wrapper.find('button').filterWhere(b => b.text() === 'Reveal Deck')
-    const hideButton = () => wrapper.find('button').filterWhere(b => b.text() === 'Hide Deck')
-    const shuffleButton = () => wrapper.find('button').filterWhere(b => b.text() === 'Shuffle')
-    const drawButton = () => wrapper.find('button').filterWhere(b => b.text() === 'Draw')
-    const resetButton = () => wrapper.find('button').filterWhere(b => b.text() === 'Reset')
+    const revealButton = () => wrapper.find(Button).filterWhere(b => b.text() === 'Reveal Deck')
+    const hideButton = () => wrapper.find(Button).filterWhere(b => b.text() === 'Hide Deck')
+    const shuffleButton = () => wrapper.find(Button).filterWhere(b => b.text() === 'Shuffle')
+    const drawButton = () => wrapper.find(Button).filterWhere(b => b.text() === 'Draw')
+    const resetButton = () => wrapper.find(Button).filterWhere(b => b.text() === 'Reset')
 
     describe('when rendered with a pack of cards', () => {
         beforeEach(() => {
-            wrapper = shallow(<DeckTemplate initialDeck={ getDeck() } />)
+            wrapper = mount(<DeckTemplate initialDeck={ getDeck() } />)
         })
 
         test('passes the cards to the deck', () => {

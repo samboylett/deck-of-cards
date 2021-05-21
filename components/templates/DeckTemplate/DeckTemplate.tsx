@@ -1,6 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 import shuffle from 'lodash.shuffle'
+import {
+    Container,
+    Header,
+    Button,
+    Icon,
+} from 'semantic-ui-react'
 
 import type CardType from '../../../types/Card'
 import { Cards } from '../../ui/Cards/Cards';
@@ -14,10 +20,6 @@ interface DeckTemplateState {
     hand: Array<CardType>
     revealedDeck: Boolean
 }
-
-const Layout = styled.div`
-    margin: 30px;
-`
 
 export class DeckTemplate extends React.Component<DeckTemplateProps, DeckTemplateState> {
     constructor(props: DeckTemplateProps) {
@@ -74,35 +76,41 @@ export class DeckTemplate extends React.Component<DeckTemplateProps, DeckTemplat
 
     render() {
         return (
-            <Layout>
-                <h1>Deck of Cards</h1>
+            <Container>
+                <Header as="h1">Deck of Cards</Header>
 
-                <button onClick={ this.toggleReveal }>
-                    { this.state.revealedDeck ? 'Hide' : 'Reveal' } Deck
-                </button>
+                <Button.Group>
+                    <Button onClick={ this.toggleReveal }>
+                        <Icon name={ this.state.revealedDeck ? 'hide' : 'unhide' } />
+                        { this.state.revealedDeck ? 'Hide' : 'Reveal' } Deck
+                    </Button>
 
-                <button
-                    disabled={ !this.canShuffle }
-                    onClick={ this.shuffle }
-                >
-                    Shuffle
-                </button>
+                    <Button
+                        disabled={ !this.canShuffle }
+                        onClick={ this.shuffle }
+                    >
+                        <Icon name="shuffle" />
+                        Shuffle
+                    </Button>
 
-                <button
-                    disabled={ !this.canDraw }
-                    onClick={ this.draw }
-                >
-                    Draw
-                </button>
+                    <Button
+                        disabled={ !this.canDraw }
+                        onClick={ this.draw }
+                    >
+                        <Icon name="grab" />
+                        Draw
+                    </Button>
 
-                <button
-                    disabled={ !this.canReset }
-                    onClick={ this.reset }
-                >
-                    Reset
-                </button>
+                    <Button
+                        disabled={ !this.canReset }
+                        onClick={ this.reset }
+                    >
+                        <Icon name="repeat" />
+                        Reset
+                    </Button>
+                </Button.Group>
 
-                <h2>Your deck</h2>
+                <Header as="h2">Your deck</Header>
 
                 <Cards
                     cards={ this.state.deck }
@@ -110,14 +118,14 @@ export class DeckTemplate extends React.Component<DeckTemplateProps, DeckTemplat
                     overlap="1.5%"
                 />
 
-                <h2>Your Hand</h2>
+                <Header as="h2">Your Hand</Header>
 
                 <Cards
                     cards={ this.state.hand }
                     revealed={ true }
                     overlap="1.5%"
                 />
-            </Layout>
+            </Container>
         )
     }
 }

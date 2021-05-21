@@ -1,11 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
-import type { Card as CardType } from '../../types/Card'
-import { Card } from '../Card/Card';
+import type CardType from '../../../types/Card'
+import { Card3D } from '../Card3D/Card3D';
 
 export interface CardsProps {
     cards: Array<CardType>
     overlap: String
+    revealed: Boolean
 }
 
 const CardsContainer = styled.div`
@@ -18,16 +19,19 @@ const CardContainer = styled.div`
     overflow: visible;
 `
 
-export function Cards({ cards, overlap }: CardsProps) {
+export function Cards({ cards, overlap, revealed }: CardsProps) {
     return (
         <CardsContainer>
             {
                 cards.map((card, index) => (
                     <CardContainer
-                        key={ index }
+                        key={ card ? [card.suit, card.value].join('-') : index }
                         overlap={ overlap }
                     >
-                        <Card card={ card } />
+                        <Card3D
+                            card={ card }
+                            revealed={ revealed }
+                        />
                     </CardContainer>
                 ))
             }

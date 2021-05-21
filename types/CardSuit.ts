@@ -5,4 +5,4 @@ enum CardSuit {
     Spades,
 }
 
-export default Suit
+export default CardSuit

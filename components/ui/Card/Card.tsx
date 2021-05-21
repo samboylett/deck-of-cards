@@ -1,8 +1,8 @@
 import React from 'react'
 import { Suit } from '../Suit/Suit'
 import svgCards from 'svg-cards/svg-cards.svg'
-import type CardType from '../../types/Card'
-import CardValue from '../../types/CardValue'
+import type CardType from '../../../types/Card'
+import CardValue from '../../../types/CardValue'
 
 export interface CardProps {
     card: CardType|null

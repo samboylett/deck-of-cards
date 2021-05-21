@@ -14,7 +14,7 @@ export default (req: NextApiRequest, res: NextApiResponse<Data>) => {
         cards: Object.keys(CardValue)
             .filter(e => isNaN(parseInt(e)))
             .flatMap(value => {
-                return Object.keys(CardValue)
+                return Object.keys(CardSuit)
                     .filter(e => isNaN(parseInt(e)))
                     .map(suit => ({
                         value,

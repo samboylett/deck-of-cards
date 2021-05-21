@@ -66,7 +66,7 @@ export function DeckTemplateView({
                 </Button>
             </Button.Group>
 
-            <Header as="h2">Your deck</Header>
+            <Header as="h2">Your Deck</Header>
 
             <Cards
                 cards={ deck }

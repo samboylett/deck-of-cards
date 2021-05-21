@@ -1,8 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import { Card } from './Card'
+import { CardImage } from './CardImage'
 
-describe('Card', () => {
+describe('CardImage', () => {
     let wrapper
 
     describe.each([
@@ -16,7 +16,7 @@ describe('Card', () => {
         ['jack of spades with value as a number', { suit: 'Spades', value: '10' }, 'spade_jack'],
     ])('when rendering the %s', (_, card, expected) => {
         beforeEach(() => {
-            wrapper = shallow(<Card card={ card } />)
+            wrapper = shallow(<CardImage card={ card } />)
         })
 
         test('renders an img', () => {

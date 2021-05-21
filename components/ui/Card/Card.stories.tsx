@@ -2,9 +2,9 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import styled from 'styled-components';
 
-import { Card, CardProps } from './Card';
 import CardValue from '../../../types/CardValue'
 import CardSuit from '../../../types/CardSuit'
+import { Card, CardProps } from './Card';
 
 const Decorator = styled.div`
     font-size: 200px;
@@ -24,87 +24,13 @@ export default {
 
 const Template: Story<CardProps> = (args) => <Card {...args} />;
 
-export const BackOfCard = Template.bind({});
-BackOfCard.args = {
-    card: null,
+export const Default = Template.bind({});
+Default.args = {
+    card: { suit: CardSuit.Spades, value: CardValue.Ace },
 };
 
-export const AceOfSpades = Template.bind({});
-AceOfSpades.args = {
-    card: {
-        suit: CardSuit.Spades,
-        value: CardValue.Ace,
-    },
-};
-
-export const KingOfSpades = Template.bind({});
-KingOfSpades.args = {
-    card: {
-        suit: CardSuit.Spades,
-        value: CardValue.King,
-    },
-};
-
-export const TenOfSpades = Template.bind({});
-TenOfSpades.args = {
-    card: {
-        suit: CardSuit.Spades,
-        value: CardValue.Ten,
-    },
-};
-
-export const JackOfSpades = Template.bind({});
-JackOfSpades.args = {
-    card: {
-        suit: CardSuit.Spades,
-        value: CardValue.Jack,
-    },
-};
-
-export const QueenOfSpades = Template.bind({});
-QueenOfSpades.args = {
-    card: {
-        suit: CardSuit.Spades,
-        value: CardValue.Queen,
-    },
-};
-
-export const AceOfHearts = Template.bind({});
-AceOfHearts.args = {
-    card: {
-        suit: CardSuit.Hearts,
-        value: CardValue.Ace,
-    },
-};
-
-export const KingOfHearts = Template.bind({});
-KingOfHearts.args = {
-    card: {
-        suit: CardSuit.Hearts,
-        value: CardValue.King,
-    },
-};
-
-export const TenOfHearts = Template.bind({});
-TenOfHearts.args = {
-    card: {
-        suit: CardSuit.Hearts,
-        value: CardValue.Ten,
-    },
-};
-
-export const JackOfHearts = Template.bind({});
-JackOfHearts.args = {
-    card: {
-        suit: CardSuit.Hearts,
-        value: CardValue.Jack,
-    },
-};
-
-export const QueenOfHearts = Template.bind({});
-QueenOfHearts.args = {
-    card: {
-        suit: CardSuit.Hearts,
-        value: CardValue.Queen,
-    },
+export const Revealed = Template.bind({});
+Revealed.args = {
+    card: { suit: CardSuit.Spades, value: CardValue.Ace },
+    revealed: true,
 };

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import FlipMove from 'react-flip-move'
 
 import type CardType from '../../../types/Card'
-import { Card3D } from '../Card3D/Card3D';
+import { Card } from '../Card/Card';
 
 export interface CardsProps {
     cards: Array<CardType>
@@ -35,7 +35,7 @@ export function Cards({ cards, overlap, revealed }: CardsProps) {
                         key={ card ? [card.suit, card.value].join('-') : index }
                         overlap={ overlap }
                     >
-                        <Card3D
+                        <Card
                             card={ card }
                             revealed={ revealed }
                         />

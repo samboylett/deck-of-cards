@@ -11,19 +11,20 @@ export interface Card3DProps {
 const CardFace = styled.div`
     transform-style: preserve-3d;
     backface-visibility: hidden;
-    grid-column: 1;
-    grid-row: 1;
 
     &:last-child {
         transform: rotateY(180deg);
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
     }
 `
 
 const Card3DContainer = styled.div`
-    display: inline-grid;
-    grid-template-columns: auto;
-    grid-template-rows: auto;
-
+    display: inline-block;
+    position: relative;
     transform: translateZ(0) rotateY(${ ({ revealed }) => revealed ? '0' : '180'}deg);
     transition: transform .7s ease;
     transform-style: preserve-3d;

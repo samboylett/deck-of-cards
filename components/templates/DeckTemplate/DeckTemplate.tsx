@@ -16,7 +16,7 @@ interface DeckTemplateState {
 }
 
 const Layout = styled.div`
-    padding: 30px;
+    margin: 30px;
 `
 
 export class DeckTemplate extends React.Component<DeckTemplateProps, DeckTemplateState> {

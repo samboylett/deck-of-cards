@@ -68,6 +68,10 @@ export class DeckTemplate extends React.Component<DeckTemplateProps, DeckTemplat
         return Boolean(this.state.deck.length)
     }
 
+    get canReset(): Boolean {
+        return Boolean(this.state.hand.length)
+    }
+
     render() {
         return (
             <Layout>
@@ -92,6 +96,7 @@ export class DeckTemplate extends React.Component<DeckTemplateProps, DeckTemplat
                 </button>
 
                 <button
+                    disabled={ !this.canReset }
                     onClick={ this.reset }
                 >
                     Reset

@@ -14,6 +14,7 @@ describe('DeckTemplate', () => {
     const hideButton = () => wrapper.find('button').filterWhere(b => b.text() === 'Hide Deck')
     const shuffleButton = () => wrapper.find('button').filterWhere(b => b.text() === 'Shuffle')
     const drawButton = () => wrapper.find('button').filterWhere(b => b.text() === 'Draw')
+    const resetButton = () => wrapper.find('button').filterWhere(b => b.text() === 'Reset')
 
     describe('when rendered with a pack of cards', () => {
         beforeEach(() => {
@@ -44,6 +45,14 @@ describe('DeckTemplate', () => {
             expect(shuffleButton().prop('disabled')).toBeFalsy()
         })
 
+        test('sets reset button to disabled', () => {
+            expect(resetButton().prop('disabled')).toBeTruthy()
+        })
+
+        test('renders a reset button', () => {
+            expect(resetButton()).toHaveLength(1)
+        })
+
         test('renders a reveal button', () => {
             expect(revealButton()).toHaveLength(1)
         })
@@ -69,6 +78,32 @@ describe('DeckTemplate', () => {
 
             test('sets shuffle button to disabled', () => {
                 expect(shuffleButton().prop('disabled')).toBeTruthy()
+            })
+
+            test('sets reset button to enabled', () => {
+                expect(resetButton().prop('disabled')).toBeFalsy()
+            })
+
+            describe('when clicking the reset button', () => {
+                beforeEach(() => {
+                    resetButton().simulate('click')
+                })
+
+                test('sets the deck to the initial value', () => {
+                    expect(deck().props.cards).toEqual(getDeck())
+                })
+
+                test('clears the hand', () => {
+                    expect(hand().props.cards).toEqual([])
+                })
+
+                test('sets shuffle button to enabled', () => {
+                    expect(shuffleButton().prop('disabled')).toBeFalsy()
+                })
+
+                test('sets reset button to disabled', () => {
+                    expect(resetButton().prop('disabled')).toBeTruthy()
+                })
             })
         })
 

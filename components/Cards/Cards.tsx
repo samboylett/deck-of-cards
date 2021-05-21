@@ -1,3 +1,4 @@
+import React from 'react'
 import styled from 'styled-components'
 import type { Card as CardType } from '../../types/Card'
 import { Card } from '../Card/Card';

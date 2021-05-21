@@ -3,8 +3,6 @@ import { shallow } from 'enzyme'
 import { Cards } from './Cards'
 import { Card3D } from '../Card3D/Card3D'
 
-jest.mock('svg-cards/svg-cards.svg', () => 'svg-cards.svg')
-
 describe('Cards', () => {
     let wrapper
 

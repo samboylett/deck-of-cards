@@ -77,8 +77,6 @@ export class DeckTemplate extends React.Component<DeckTemplateProps, DeckTemplat
     render() {
         return (
             <Container>
-                <Header as="h1">Deck of Cards</Header>
-
                 <Button.Group>
                     <Button onClick={ this.toggleReveal }>
                         <Icon name={ this.state.revealedDeck ? 'hide' : 'unhide' } />

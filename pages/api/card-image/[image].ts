@@ -3,19 +3,26 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { promises as fs } from 'fs'
 import path from 'path'
 
+const requireImages = require.context('svg-cards/png/2x', true, /\.png$/);
+const images = requireImages.keys().map(key => ({
+    name: path.basename(key),
+    source: requireImages(key).default,
+}))
+
 const IMAGES_PATH = 'node_modules/svg-cards/png/2x'
 
 export default async function (req: NextApiRequest, res: NextApiResponse<string>) {
-    const files = await fs.readdir(IMAGES_PATH)
-    const image = req.query.image.toString()
+    const requestedImage = req.query.image.toString()
+    const image = images.find(({ name }) => name === requestedImage)
 
-    if (!files.includes(image)) {
+    if (!image) {
         res.status(404).send('Not found')
 
         return
     }
 
-    const file = await fs.readFile(path.join(IMAGES_PATH, image))
+    const buffer: Buffer = new Buffer(image.source.split(',')[1], 'base64')
 
-    res.status(200).send(file.toString())
+    res.setHeader('Content-type', 'image/png')
+    res.status(200).send(buffer)
 }

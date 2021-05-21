@@ -2,13 +2,11 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { Card } from './Card'
 
-jest.mock('svg-cards/svg-cards.svg', () => 'svg-cards.svg')
-
 describe('Card', () => {
     let wrapper
 
     describe.each([
-        ['back of a card', null, 'back'],
+        ['back of a card', null, 'back-blue'],
         ['ace of spades', { suit: 'Spades', value: 'Ace' }, 'spade_1'],
         ['ace of spades with value as a number', { suit: 'Spades', value: '0' }, 'spade_1'],
         ['2 of spades', { suit: 'Spades', value: 'Two' }, 'spade_2'],
@@ -21,14 +19,14 @@ describe('Card', () => {
             wrapper = shallow(<Card card={ card } />)
         })
 
-        test('renders an svg', () => {
-            expect(wrapper.exists('svg')).toBe(true)
+        test('renders an img', () => {
+            expect(wrapper.exists('img')).toBe(true)
         })
 
-        test('sets the svg use href to the correct svg image', () => {
-            const href = wrapper.find('svg use').prop('href')
+        test('sets the img src to the correct image', () => {
+            const src = wrapper.find('img').prop('src')
 
-            expect(href).toEqual(`svg-cards.svg#${ expected }`)
+            expect(src).toEqual(`/api/card-image/${ expected }.png`)
         })
     })
 })

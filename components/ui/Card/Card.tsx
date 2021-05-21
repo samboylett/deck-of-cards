@@ -1,6 +1,6 @@
 import React from 'react'
+
 import { Suit } from '../Suit/Suit'
-import svgCards from 'svg-cards/svg-cards.svg'
 import type CardType from '../../../types/Card'
 import CardValue from '../../../types/CardValue'
 
@@ -10,7 +10,7 @@ export interface CardProps {
 
 function getSvgImage(card: CardType|null) {
     if (!card) {
-        return 'back';
+        return 'back-blue.png';
     }
 
     const suit = card.suit.toLowerCase().slice(0, -1);
@@ -24,21 +24,13 @@ function getSvgImage(card: CardType|null) {
         ? (value + 1)
         : CardValue[value].toLowerCase()
 
-    return `${ suit }_${ svgValue }`
+    return `${ suit }_${ svgValue }.png`
 }
 
 export function Card({ card }: CardProps) {
-    const href = `${ svgCards }#${ getSvgImage(card) }`
+    const imageName = `/api/card-image/${ getSvgImage(card) }`
 
     return (
-        <svg width="169" height="244">
-            <use
-                href={ href }
-                x="0"
-                y="0"
-                width="100%"
-                height="100%"
-            />
-        </svg>
+        <img src={ imageName } />
     );
 }

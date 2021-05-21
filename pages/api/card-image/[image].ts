@@ -1,5 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
+import { promises as fs } from 'fs'
+import path from 'path'
 
 import type Card from '../../types/Card'
 import CardSuit from '../../types/CardSuit'
@@ -9,17 +11,19 @@ type Data = {
     cards: Array<Card>
 }
 
+const IMAGES_PATH = 'node_modules/svg-cards/png/2x'
+
 export default async function (req: NextApiRequest, res: NextApiResponse<Data>) {
-    res.status(200).json({
-        cards: Object.keys(CardValue)
-            .filter(e => isNaN(parseInt(e)))
-            .flatMap(value => {
-                return Object.keys(CardSuit)
-                    .filter(e => isNaN(parseInt(e)))
-                    .map(suit => ({
-                        value,
-                        suit,
-                    }))
-            }),
-    })
+    const files = await fs.readdir(IMAGES_PATH)
+    const { image } = req.query
+
+    if (!files.includes(image)) {
+        res.status(422).send()
+
+        return
+    }
+
+    const file = await fs.readFile(path.join(IMAGES_PATH, image))
+
+    res.status(200).send(file)
 }

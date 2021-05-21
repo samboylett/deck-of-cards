@@ -7,18 +7,12 @@ import {
     Icon,
 } from 'semantic-ui-react'
 
+import type { ViewProps as DeckTemplateViewProps } from '../DeckTemplateLogic/DeckTemplateLogic'
+
 import type CardType from '../../../../types/Card'
 import { Cards } from '../../../ui/Cards/Cards';
 
-export interface DeckTemplateViewProps {
-    deck: Array<CardType>
-    hand: Array<CardType>
-    revealedDeck: boolean
-    onToggleReveal: Function
-    onShuffle: Function
-    onDraw: Function
-    onReset: Function
-}
+export type { DeckTemplateViewProps }
 
 export function DeckTemplateView({
     deck,
@@ -28,7 +22,7 @@ export function DeckTemplateView({
     onShuffle,
     onDraw,
     onReset,
-}: DeckTemplateProps) {
+}: DeckTemplateViewProps) {
     const canReset = Boolean(hand.length)
     const canDraw = Boolean(deck.length)
     const canShuffle = deck.length === 52

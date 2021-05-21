@@ -8,25 +8,25 @@ export interface ViewProps {
     deck: Array<CardType>
     hand: Array<CardType>
     revealedDeck: boolean
-    onToggleReveal: Function
-    onShuffle: Function
-    onDraw: Function
-    onReset: Function
+    onToggleReveal: () => void
+    onShuffle: () => void
+    onDraw: () => void
+    onReset: () => void
 }
 
 export interface DeckTemplateLogicProps {
     initialDeck: Array<CardType>
-    View: ViewProps
+    View: (props: ViewProps) => any
 }
 
 interface DeckTemplateState {
     deck: Array<CardType>
     hand: Array<CardType>
-    revealedDeck: Boolean
+    revealedDeck: boolean
 }
 
-export class DeckTemplateLogic extends React.Component<DeckTemplateProps, DeckTemplateState> {
-    constructor(props: DeckTemplateProps) {
+export class DeckTemplateLogic extends React.Component<DeckTemplateLogicProps, DeckTemplateState> {
+    constructor(props: DeckTemplateLogicProps) {
         super(props)
 
         this.state = {

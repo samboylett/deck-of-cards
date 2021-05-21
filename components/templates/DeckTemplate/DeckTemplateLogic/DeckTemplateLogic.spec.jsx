@@ -1,13 +1,17 @@
 import React from 'react'
 import { mount } from 'enzyme'
 
-import { DeckTemplate } from './DeckTemplate'
-import { Cards } from '../../ui/Cards/Cards'
+import { DeckTemplateLogic } from './DeckTemplateLogic'
+import { DeckTemplateView } from '../DeckTemplateView/DeckTemplateView'
+import { Cards } from '../../../ui/Cards/Cards'
 import { Button } from 'semantic-ui-react'
-import { getDeck } from '../../../helpers/cards/cards'
+import { getDeck } from '../../../../helpers/cards/cards'
 
-describe('DeckTemplate', () => {
+describe('DeckTemplateLogic', () => {
     let wrapper
+
+    // const View = () => (<div />)
+    const View = DeckTemplateView
 
     const deck = () => wrapper.find(Cards).get(0)
     const hand = () => wrapper.find(Cards).get(1)
@@ -19,7 +23,7 @@ describe('DeckTemplate', () => {
 
     describe('when rendered with a pack of cards', () => {
         beforeEach(() => {
-            wrapper = mount(<DeckTemplate initialDeck={ getDeck() } />)
+            wrapper = mount(<DeckTemplateLogic initialDeck={ getDeck() } View={ View } />)
         })
 
         test('passes the cards to the deck', () => {

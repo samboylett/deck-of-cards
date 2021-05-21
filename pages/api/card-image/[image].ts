@@ -18,7 +18,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse<Data>) 
     const { image } = req.query
 
     if (!files.includes(image)) {
-        res.status(422).send()
+        res.status(404).send()
 
         return
     }

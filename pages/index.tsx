@@ -1,6 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 import { DeckTemplate } from '../components/templates/DeckTemplate/DeckTemplate'
+import { getDeck } from '../helpers/cards/cards'
 
 export default function Home() {
     return (
@@ -10,15 +11,7 @@ export default function Home() {
             </Head>
 
             <main>
-                <DeckTemplate
-                    initialDeck={[
-                        { suit: 'Diamonds', value: 'Ace' },
-                        { suit: 'Spades', value: 'Ace' },
-                        { suit: 'Hearts', value: 'Ace' },
-                        { suit: 'Diamonds', value: 'King' },
-                        { suit: 'Spades', value: 'King' },
-                    ]}
-                />
+                <DeckTemplate initialDeck={ getDeck() } />
             </main>
         </div>
     )

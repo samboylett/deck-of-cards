@@ -2,6 +2,8 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import styled from 'styled-components';
 
+import CardValue from '../../../types/CardValue'
+import CardSuit from '../../../types/CardSuit'
 import { Cards, CardsProps } from './Cards';
 
 const Decorator = styled.div`
@@ -31,10 +33,10 @@ export const FullHouse = Template.bind({});
 FullHouse.args = {
     overlap: '50px',
     cards: [
-        { suit: 'Diamonds', value: 'Ace' },
-        { suit: 'Spades', value: 'Ace' },
-        { suit: 'Hearts', value: 'Ace' },
-        { suit: 'Diamonds', value: 'King' },
-        { suit: 'Spades', value: 'King' },
+        { suit: CardSuit.Diamonds, value: CardValue.Ace },
+        { suit: CardSuit.Spades, value: CardValue.Ace },
+        { suit: CardSuit.Hearts, value: CardValue.Ace },
+        { suit: CardSuit.Diamonds, value: CardValue.King },
+        { suit: CardSuit.Spades, value: CardValue.King },
     ],
 };

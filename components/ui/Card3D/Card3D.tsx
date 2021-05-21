@@ -22,7 +22,11 @@ const CardFace = styled.div`
     }
 `
 
-const Card3DContainer = styled.div`
+interface Card3DContainerProps {
+    revealed: Boolean
+}
+
+const Card3DContainer = styled.div<Card3DContainerProps>`
     display: inline-block;
     position: relative;
     transform: translateZ(0) rotateY(${ ({ revealed }) => revealed ? '0' : '180'}deg);

@@ -7,7 +7,7 @@ import { Card3D } from '../Card3D/Card3D';
 
 export interface CardsProps {
     cards: Array<CardType>
-    overlap: String
+    overlap: string
     revealed: Boolean
 }
 
@@ -16,7 +16,11 @@ const CardsContainer = styled(FlipMove)`
     align-content: center;
 `
 
-const CardContainer = styled.div`
+interface CardContainerProps {
+    overlap: string
+}
+
+const CardContainer = styled.div<CardContainerProps>`
     width: ${ ({ overlap }) => overlap || '5px' };
     overflow: visible;
     z-index: 1;

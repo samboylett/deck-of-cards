@@ -3,8 +3,7 @@ import { Story, Meta } from '@storybook/react';
 import styled from 'styled-components';
 
 import { DeckTemplate, DeckTemplateProps } from './DeckTemplate';
-import CardValue from '../../../types/CardValue'
-import CardSuit from '../../../types/CardSuit'
+import { getDeck } from '../../../helpers/cards/cards'
 
 export default {
     title: 'suites/DeckTemplate',
@@ -15,14 +14,5 @@ const Template: Story<DeckTemplateProps> = (args) => <DeckTemplate {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-    initialDeck: Object.keys(CardValue)
-        .filter(e => isNaN(parseInt(e)))
-        .flatMap(value => {
-            return Object.keys(CardSuit)
-                .filter(e => isNaN(parseInt(e)))
-                .map(suit => ({
-                    value,
-                    suit,
-                }))
-        }),
+    initialDeck: getDeck(),
 };

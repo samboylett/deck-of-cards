@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { Suit } from '../Suit/Suit'
 import type CardType from '../../../types/Card'
 import CardValue from '../../../types/CardValue'
 
@@ -13,11 +12,13 @@ function getSvgImage(card: CardType|null) {
         return 'back-blue.png';
     }
 
-    const suit = card.suit.toLowerCase().slice(0, -1);
-    const value: Number = parseInt(
-        isNaN(parseInt(card.value))
-            ? CardValue[card.value]
-            : card.value
+    const suit = card.suit.toString().toLowerCase().slice(0, -1);
+    const value: number = parseInt(
+        (
+            isNaN(parseInt(card.value.toString()))
+                ? CardValue[card.value]
+                : card.value
+        ).toString()
     )
 
     const svgValue = value < 10

@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import FlipMove from 'react-flip-move'
+
 import type CardType from '../../../types/Card'
 import { Card3D } from '../Card3D/Card3D';
 
@@ -9,7 +11,7 @@ export interface CardsProps {
     revealed: Boolean
 }
 
-const CardsContainer = styled.div`
+const CardsContainer = styled(FlipMove)`
     display: flex;
     align-content: center;
 `

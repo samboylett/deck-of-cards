@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import shuffle from 'lodash.shuffle'
+
 import type CardType from '../../../types/Card'
 import { Cards } from '../../ui/Cards/Cards';
 
@@ -31,6 +33,16 @@ export class DeckTemplate extends React.Component<DeckTemplateProps, DeckTemplat
         })
     }
 
+    shuffle = () => {
+        this.setState({
+            deck: shuffle(this.state.deck),
+        })
+    }
+
+    get canShuffle() {
+        return this.state.deck.length === 52
+    }
+
     render() {
         return (
             <Layout>
@@ -40,6 +52,13 @@ export class DeckTemplate extends React.Component<DeckTemplateProps, DeckTemplat
 
                 <button onClick={ this.toggleReveal }>
                     { this.state.revealedDeck ? 'Hide' : 'Reveal' } Deck
+                </button>
+
+                <button
+                    disabled={ !this.canShuffle }
+                    onClick={ this.canShuffle && this.shuffle }
+                >
+                    Shuffle
                 </button>
 
                 <Cards

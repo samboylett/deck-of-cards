@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 
 import type CardType from '../../../types/Card'
 import CardValue from '../../../types/CardValue'
@@ -10,33 +11,44 @@ export interface CardImageProps {
 
 function getImage(card: CardType|null) {
     if (!card) {
-        return 'back-blue.png';
+        return 'blue_back.jpg';
     }
 
     const suitString = isNaN(parseInt(card.suit.toString()))
         ? card.suit
         : CardSuit[card.suit]
 
-    const suit = suitString.toString().toLowerCase().slice(0, -1);
+    const suitLetter = suitString.toString().toUpperCase()[0]
+
     const value: number = parseInt(
         (
             isNaN(parseInt(card.value.toString()))
                 ? CardValue[card.value]
                 : card.value
         ).toString()
-    )
+    ) + 1
 
-    const svgValue = value < 10
-        ? (value + 1)
-        : CardValue[value].toLowerCase()
+    const imageValue = {
+        1: 'A',
+        11: 'J',
+        12: 'Q',
+        13: 'K',
+    }[value] || value
 
-    return `${ suit }_${ svgValue }.png`
+    return `${ imageValue }${ suitLetter }.jpg`
 }
 
 export function CardImage({ card }: CardImageProps) {
-    const imageName = `/api/card-image/${ getImage(card) }`
+    const imageSource = `/cards/${ getImage(card) }`
+    const imageAlt = card
+        ? `${ card.value } of ${ card.suit }`
+        : 'Back of card'
 
     return (
-        <img src={ imageName } />
+        <Image
+            src={ imageSource }
+            alt={ imageAlt }
+            layout="fill"
+        />
     );
 }

@@ -6,20 +6,9 @@ import CardValue from '../../../types/CardValue'
 import CardSuit from '../../../types/CardSuit'
 import { Cards, CardsProps } from './Cards';
 
-const Decorator = styled.div`
-    font-size: 200px;
-`
-
 export default {
     title: 'suites/Cards',
     component: Cards,
-    decorators: [
-        (Story) => (
-            <Decorator>
-                <Story />
-            </Decorator>
-        ),
-    ],
 } as Meta;
 
 const Template: Story<CardsProps> = (args) => <Cards {...args} />;
@@ -32,6 +21,7 @@ DeckOfCards.args = {
 export const FullHouse = Template.bind({});
 FullHouse.args = {
     overlap: '50px',
+    revealed: true,
     cards: [
         { suit: CardSuit.Diamonds, value: CardValue.Ace },
         { suit: CardSuit.Spades, value: CardValue.Ace },

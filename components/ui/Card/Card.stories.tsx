@@ -6,20 +6,9 @@ import CardValue from '../../../types/CardValue'
 import CardSuit from '../../../types/CardSuit'
 import { Card, CardProps } from './Card';
 
-const Decorator = styled.div`
-    font-size: 200px;
-`
-
 export default {
     title: 'suites/Card',
     component: Card,
-    decorators: [
-        (Story) => (
-            <Decorator>
-                <Story />
-            </Decorator>
-        ),
-    ],
 } as Meta;
 
 const Template: Story<CardProps> = (args) => <Card {...args} />;

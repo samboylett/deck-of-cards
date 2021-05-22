@@ -8,6 +8,12 @@ export interface CardProps {
     revealed: Boolean
 }
 
+const CardImageWrapper = styled.div`
+    margin: -4px;
+    width: 187px;
+    max-width: 10vw;
+`
+
 const CardFace = styled.div`
     transform-style: preserve-3d;
     backface-visibility: hidden;
@@ -23,12 +29,6 @@ const CardFace = styled.div`
         right: 0;
         bottom: 0;
         left: 0;
-    }
-
-    img {
-        width: 200px;
-        max-width: 10vw;
-        margin: -4px;
     }
 `
 
@@ -51,11 +51,15 @@ export function Card({ card, revealed = false }: CardProps) {
     return (
         <CardContainer revealed={ revealed }>
             <CardFace>
-                <CardImage card={ card } />
+                <CardImageWrapper>
+                    <CardImage card={ card } />
+                </CardImageWrapper>
             </CardFace>
 
             <CardFace>
-                <CardImage card={ null } />
+                <CardImageWrapper>
+                    <CardImage card={ null } />
+                </CardImageWrapper>
             </CardFace>
         </CardContainer>
     );

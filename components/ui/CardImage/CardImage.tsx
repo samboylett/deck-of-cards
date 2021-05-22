@@ -1,5 +1,5 @@
 import React from 'react'
-import Image from 'next/image'
+import Image from 'next/image';
 
 import type CardType from '../../../types/Card'
 import CardValue from '../../../types/CardValue'
@@ -48,7 +48,8 @@ export function CardImage({ card }: CardImageProps) {
         <Image
             src={ imageSource }
             alt={ imageAlt }
-            layout="fill"
+            width={187}
+            height={286}
         />
     );
 }

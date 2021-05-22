@@ -19,12 +19,20 @@ const CardsContainer = styled(FlipMove)`
 
 interface CardContainerProps {
     overlap: string
+    revealed: Boolean
 }
 
 const CardContainer = styled.div<CardContainerProps>`
     width: ${ ({ overlap }) => overlap || '5px' };
     overflow: visible;
-    z-index: 1;
+    transition: width 0.5s ease;
+
+    ${ ({ revealed }) => revealed && `
+        &:hover {
+            width: 100px;
+            max-width: 40vw;
+        }
+    ` }
 `
 
 export function Cards({ cards, overlap, revealed }: CardsProps) {
@@ -35,6 +43,7 @@ export function Cards({ cards, overlap, revealed }: CardsProps) {
                     <CardContainer
                         key={ card ? [card.suit, card.value].join('-') : index }
                         overlap={ overlap }
+                        revealed={ revealed }
                     >
                         <Card
                             card={ card }

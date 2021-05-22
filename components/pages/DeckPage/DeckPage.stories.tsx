@@ -1,6 +1,5 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import styled from 'styled-components';
 
 import { DeckPage, DeckPageProps } from './DeckPage';
 import { getDeck } from '../../../helpers/cards/cards'

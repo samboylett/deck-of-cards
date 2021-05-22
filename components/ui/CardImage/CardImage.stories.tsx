@@ -1,6 +1,5 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import styled from 'styled-components';
 
 import { CardImage, CardImageProps } from './CardImage';
 import CardValue from '../../../types/CardValue'

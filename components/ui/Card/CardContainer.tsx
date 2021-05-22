@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export interface CardContainerProps {
-    revealed: Boolean
+    revealed: boolean
 }
 
 export const CardContainer = styled.div<CardContainerProps>`

@@ -28,11 +28,10 @@ export function DeckTemplate({
     onShuffle,
     onDraw,
     onReset,
-}: DeckTemplateProps) {
+}: DeckTemplateProps): JSX.Element {
     const canReset = Boolean(hand.length)
     const canDraw = Boolean(deck.length)
     const canShuffle = deck.length === 52
-    const buttonTextDeviceWidth = 800
 
     return (
         <Container>

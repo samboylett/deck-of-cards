@@ -23,10 +23,10 @@ export default function useDeck({ initialDeck }: UseDeckArgs): UseDeckProps {
     const [hand, setHand] = useState<Cards>([]);
     const [revealedDeck, setRevealedDeck] = useState<boolean>(false);
 
-    const toggleReveal = () => setRevealedDeck(!revealedDeck);
-    const shuffle = () => setDeck(lodashShuffle(deck));
+    const toggleReveal = (): void => setRevealedDeck(!revealedDeck);
+    const shuffle = (): void => setDeck(lodashShuffle(deck));
 
-    const draw = () => {
+    const draw = (): void => {
         setHand([
             ...hand,
             deck.slice(-1)[0],
@@ -35,22 +35,15 @@ export default function useDeck({ initialDeck }: UseDeckArgs): UseDeckProps {
         setDeck(deck.slice(0, -1));
     };
 
-    const reset = () => {
+    const reset = (): void => {
         setDeck(initialDeck);
         setHand([]);
     };
-
-    const canReset = Boolean(hand.length)
-    const canDraw = Boolean(deck.length)
-    const canShuffle = deck.length === 52
 
     return {
         deck,
         hand,
         revealedDeck,
-        canReset,
-        canDraw,
-        canShuffle,
         toggleReveal,
         shuffle,
         draw,

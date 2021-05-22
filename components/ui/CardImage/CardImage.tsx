@@ -2,16 +2,13 @@ import React from 'react'
 import Image from 'next/image';
 
 import type CardType from '../../../types/Card'
-import CardValue from '../../../types/CardValue'
-import CardSuit from '../../../types/CardSuit'
-
 import { getImageURLPath, getImageAlt } from '../../../helpers/cards/cards'
 
 export interface CardImageProps {
     card: CardType|null
 }
 
-export function CardImage({ card }: CardImageProps) {
+export function CardImage({ card }: CardImageProps): JSX.Element {
     return (
         <Image
             src={ getImageURLPath(card) }

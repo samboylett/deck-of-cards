@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 import type CardType from '../../../types/Card'
 import { CardImage } from '../CardImage/CardImage'
 
@@ -9,10 +8,10 @@ import { CardImageWrapper } from './CardImageWrapper'
 
 export interface CardProps {
     card: CardType
-    revealed: Boolean
+    revealed: boolean
 }
 
-export function Card({ card, revealed = false }: CardProps) {
+export function Card({ card, revealed = false }: CardProps): JSX.Element {
     return (
         <CardContainer revealed={ revealed }>
             <CardFace>

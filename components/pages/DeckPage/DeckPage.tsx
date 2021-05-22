@@ -1,9 +1,9 @@
 import React from 'react'
 import { DeckTemplate } from '../../templates/DeckTemplate/DeckTemplate'
-import useDeck, { UseDeckArgs } from '../../../hooks/useDeck/useDeck'
+import useDeck from '../../../hooks/useDeck/useDeck'
 import { getDeck } from '../../../helpers/cards/cards'
 
-export function DeckPage() {
+export function DeckPage(): JSX.Element {
     const {
         deck,
         hand,

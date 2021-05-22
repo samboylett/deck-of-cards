@@ -1,6 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
-import FlipMove from 'react-flip-move'
 
 import type CardsType from '../../../types/Cards'
 import { Card } from '../Card/Card';
@@ -11,10 +9,10 @@ import { CardsContainer } from './CardsContainer'
 export interface CardsProps {
     cards: CardsType
     overlap: string
-    revealed: Boolean
+    revealed: boolean
 }
 
-export function Cards({ cards, overlap, revealed }: CardsProps) {
+export function Cards({ cards, overlap, revealed }: CardsProps): JSX.Element {
     return (
         <CardsContainer>
             {

@@ -14,6 +14,7 @@ export interface CardsProps {
 const CardsContainer = styled(FlipMove)`
     display: flex;
     align-content: center;
+    margin-right: 187px;
 `
 
 interface CardContainerProps {

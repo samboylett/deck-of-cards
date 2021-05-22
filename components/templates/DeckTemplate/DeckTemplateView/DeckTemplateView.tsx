@@ -6,6 +6,7 @@ import {
     Button,
     Icon,
 } from 'semantic-ui-react'
+import MediaQuery from 'react-responsive'
 
 import type { ViewProps as DeckTemplateViewProps } from '../DeckTemplateLogic/DeckTemplateLogic'
 
@@ -26,13 +27,16 @@ export function DeckTemplateView({
     const canReset = Boolean(hand.length)
     const canDraw = Boolean(deck.length)
     const canShuffle = deck.length === 52
+    const buttonTextDeviceWidth = 800
 
     return (
         <Container>
             <Button.Group>
                 <Button onClick={ onToggleReveal }>
                     <Icon name={ revealedDeck ? 'hide' : 'unhide' } />
-                    { revealedDeck ? 'Hide' : 'Reveal' } Deck
+                    <MediaQuery minDeviceWidth={buttonTextDeviceWidth}>
+                        { revealedDeck ? 'Hide' : 'Reveal' } Deck
+                    </MediaQuery>
                 </Button>
 
                 <Button
@@ -40,7 +44,9 @@ export function DeckTemplateView({
                     onClick={ onShuffle }
                 >
                     <Icon name="shuffle" />
-                    Shuffle
+                    <MediaQuery minDeviceWidth={buttonTextDeviceWidth}>
+                        Shuffle
+                    </MediaQuery>
                 </Button>
 
                 <Button
@@ -48,7 +54,9 @@ export function DeckTemplateView({
                     onClick={ onDraw }
                 >
                     <Icon name="grab" />
-                    Draw
+                    <MediaQuery minDeviceWidth={buttonTextDeviceWidth}>
+                        Draw
+                    </MediaQuery>
                 </Button>
 
                 <Button
@@ -56,7 +64,9 @@ export function DeckTemplateView({
                     onClick={ onReset }
                 >
                     <Icon name="repeat" />
-                    Reset
+                    <MediaQuery minDeviceWidth={buttonTextDeviceWidth}>
+                        Reset
+                    </MediaQuery>
                 </Button>
             </Button.Group>
 

@@ -1,16 +1,17 @@
 import { useState } from 'react'
 import lodashShuffle from 'lodash.shuffle'
 
-import type CardType from '../../types/Card'
+import type Cards from '../../types/Cards'
 
 export interface UseDeckArgs {
-    initialDeck: Array<CardType>
+    initialDeck: Cards
 }
 
 export interface UseDeckReturn {
-    deck: Array<CardType>
-    hand: Array<CardType>
+    deck: Cards
+    hand: Cards
     revealedDeck: boolean
+
     onToggleReveal: () => void
     onShuffle: () => void
     onDraw: () => void
@@ -18,8 +19,8 @@ export interface UseDeckReturn {
 }
 
 export default function useDeck({ initialDeck }: UseDeckArgs): UseDeckProps {
-    const [deck, setDeck] = useState<Array<CardType>>(initialDeck);
-    const [hand, setHand] = useState<Array<CardType>>([]);
+    const [deck, setDeck] = useState<Cards>(initialDeck);
+    const [hand, setHand] = useState<Cards>([]);
     const [revealedDeck, setRevealedDeck] = useState<boolean>(false);
 
     const toggleReveal = () => setRevealedDeck(!revealedDeck);
@@ -39,10 +40,17 @@ export default function useDeck({ initialDeck }: UseDeckArgs): UseDeckProps {
         setHand([]);
     };
 
+    const canReset = Boolean(hand.length)
+    const canDraw = Boolean(deck.length)
+    const canShuffle = deck.length === 52
+
     return {
         deck,
         hand,
         revealedDeck,
+        canReset,
+        canDraw,
+        canShuffle,
         toggleReveal,
         shuffle,
         draw,

@@ -1,21 +1,13 @@
 import React from 'react'
-import styled from 'styled-components'
 
-const Header = styled.header`
-    margin-bottom: 20px;
-    color: #eee;
-    background: #111;
-    padding: 10px;
-    text-align: center;
-    font-size: 2em;
-`
+import LayoutHeader from './LayoutHeader'
 
 export function Layout({ children }: React.PropsWithChildren<{}>) {
     return (
         <div>
-            <Header>
+            <LayoutHeader>
                 Deck of Cards
-            </Header>
+            </LayoutHeader>
 
             <main>
                 { children }

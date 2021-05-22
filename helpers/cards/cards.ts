@@ -1,8 +1,9 @@
+import type Cards from '../../types/Cards'
 import type Card from '../../types/Card'
 import CardSuit from '../../types/CardSuit'
 import CardValue from '../../types/CardValue'
 
-export function getDeck(): Array<Card> {
+export function getDeck(): Cards {
     return Object.values(CardValue)
         .filter(e => isNaN(parseInt(e.toString())))
         .flatMap(value => {
@@ -13,4 +14,37 @@ export function getDeck(): Array<Card> {
                     suit: suit as unknown as CardSuit,
                 }))
         })
+}
+
+export function getImageFileName(card: Card|null) {
+    if (!card) {
+        return 'blue_back.jpg';
+    }
+
+    const suitString = isNaN(parseInt(card.suit.toString()))
+        ? card.suit
+        : CardSuit[card.suit]
+
+    const suitLetter = suitString.toString().toUpperCase()[0]
+
+    const value: number = parseInt(
+        (
+            isNaN(parseInt(card.value.toString()))
+                ? CardValue[card.value]
+                : card.value
+        ).toString()
+    ) + 1
+
+    const imageValue = {
+        1: 'A',
+        11: 'J',
+        12: 'Q',
+        13: 'K',
+    }[value] || value
+
+    return `${ imageValue }${ suitLetter }.jpg`
+}
+
+export function getImageURLPath(card: Card|null) {
+    return `/cards/${ getImageFileName(card) }`
 }

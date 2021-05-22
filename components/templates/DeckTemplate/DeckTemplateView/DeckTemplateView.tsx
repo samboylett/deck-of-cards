@@ -6,7 +6,6 @@ import {
     Button,
     Icon,
 } from 'semantic-ui-react'
-import MediaQuery from 'react-responsive'
 
 import type { ViewProps as DeckTemplateViewProps } from '../DeckTemplateLogic/DeckTemplateLogic'
 
@@ -34,9 +33,7 @@ export function DeckTemplateView({
             <Button.Group>
                 <Button onClick={ onToggleReveal }>
                     <Icon name={ revealedDeck ? 'hide' : 'unhide' } />
-                    <MediaQuery minDeviceWidth={buttonTextDeviceWidth}>
-                        { revealedDeck ? 'Hide' : 'Reveal' } Deck
-                    </MediaQuery>
+                    { revealedDeck ? 'Hide' : 'Reveal' } Deck
                 </Button>
 
                 <Button
@@ -44,9 +41,7 @@ export function DeckTemplateView({
                     onClick={ onShuffle }
                 >
                     <Icon name="shuffle" />
-                    <MediaQuery minDeviceWidth={buttonTextDeviceWidth}>
-                        Shuffle
-                    </MediaQuery>
+                    Shuffle
                 </Button>
 
                 <Button
@@ -54,9 +49,7 @@ export function DeckTemplateView({
                     onClick={ onDraw }
                 >
                     <Icon name="grab" />
-                    <MediaQuery minDeviceWidth={buttonTextDeviceWidth}>
-                        Draw
-                    </MediaQuery>
+                    Draw
                 </Button>
 
                 <Button
@@ -64,9 +57,7 @@ export function DeckTemplateView({
                     onClick={ onReset }
                 >
                     <Icon name="repeat" />
-                    <MediaQuery minDeviceWidth={buttonTextDeviceWidth}>
-                        Reset
-                    </MediaQuery>
+                    Reset
                 </Button>
             </Button.Group>
 

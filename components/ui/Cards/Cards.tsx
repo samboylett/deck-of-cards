@@ -2,11 +2,11 @@ import React from 'react'
 import styled from 'styled-components'
 import FlipMove from 'react-flip-move'
 
-import type CardType from '../../../types/Card'
+import type CardsType from '../../../types/Cards'
 import { Card } from '../Card/Card';
 
 export interface CardsProps {
-    cards: Array<CardType>
+    cards: CardsType
     overlap: string
     revealed: Boolean
 }

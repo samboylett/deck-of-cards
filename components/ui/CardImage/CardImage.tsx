@@ -1,5 +1,5 @@
 import React from 'react'
-import Image from 'next/image';
+import Image from 'next/image'
 
 import type CardType from '../../../types/Card'
 import { getImageURLPath, getImageAlt } from '../../../helpers/cards/cards'

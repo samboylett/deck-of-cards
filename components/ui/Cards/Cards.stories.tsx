@@ -1,23 +1,23 @@
-import React from 'react';
-import { Story, Meta } from '@storybook/react';
+import React from 'react'
+import { Story, Meta } from '@storybook/react'
 
 import CardValue from '../../../types/CardValue'
 import CardSuit from '../../../types/CardSuit'
-import { Cards, CardsProps } from './Cards';
+import { Cards, CardsProps } from './Cards'
 
 export default {
     title: 'suites/Cards',
     component: Cards,
-} as Meta;
+} as Meta
 
-const Template: Story<CardsProps> = (args) => <Cards {...args} />;
+const Template: Story<CardsProps> = (args) => <Cards {...args} />
 
-export const DeckOfCards = Template.bind({});
+export const DeckOfCards = Template.bind({})
 DeckOfCards.args = {
     cards: Array(52).fill(null),
-};
+}
 
-export const FullHouse = Template.bind({});
+export const FullHouse = Template.bind({})
 FullHouse.args = {
     overlap: '50px',
     revealed: true,
@@ -28,4 +28,4 @@ FullHouse.args = {
         { suit: CardSuit.Diamonds, value: CardValue.King },
         { suit: CardSuit.Spades, value: CardValue.King },
     ],
-};
+}

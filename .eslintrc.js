@@ -10,6 +10,9 @@ module.exports = {
     },
     ignorePatterns: ['node_modules/*', '.next/*', '.out/*'],
     extends: ['eslint:recommended'],
+    rules: {
+        semi: ['error', 'never'],
+    },
     overrides: [
         {
             files: ['**/*.jsx'],

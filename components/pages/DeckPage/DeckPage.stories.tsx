@@ -1,7 +1,7 @@
-import React from 'react';
-import { Story, Meta } from '@storybook/react';
+import React from 'react'
+import { Story, Meta } from '@storybook/react'
 
-import { DeckPage, DeckPageProps } from './DeckPage';
+import { DeckPage, DeckPageProps } from './DeckPage'
 import { getDeck } from '../../../helpers/cards/cards'
 
 export default {
@@ -12,11 +12,11 @@ export default {
             argTypesRegex: '^on.*',
         },
     },
-} as Meta;
+} as Meta
 
-const Template: Story<DeckPageProps> = (args) => <DeckPage {...args} />;
+const Template: Story<DeckPageProps> = (args) => <DeckPage {...args} />
 
-export const Default = Template.bind({});
+export const Default = Template.bind({})
 Default.args = {
     initialDeck: getDeck(),
-};
+}

@@ -24,7 +24,7 @@ export function getImageAlt(card: Card|null): string {
 
 export function getImageFileName(card: Card|null): string {
     if (!card) {
-        return 'blue_back.jpg';
+        return 'blue_back.jpg'
     }
 
     const suitString = isNaN(parseInt(card.suit.toString()))

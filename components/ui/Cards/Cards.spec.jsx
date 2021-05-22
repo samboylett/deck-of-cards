@@ -19,7 +19,7 @@ describe('Cards', () => {
             wrapper.find(Card).forEach(cardWrapper => {
                 expect(cardWrapper.prop('card')).toBe(null)
             })
-        });
+        })
     })
 
     describe('when rendering a hand', () => {

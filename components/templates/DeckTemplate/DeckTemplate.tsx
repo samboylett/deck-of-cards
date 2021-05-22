@@ -7,7 +7,7 @@ import {
 } from 'semantic-ui-react'
 
 import type CardsType from '../../../types/Cards'
-import { Cards } from '../../ui/Cards/Cards';
+import { Cards } from '../../ui/Cards/Cards'
 
 export interface DeckTemplateProps {
     deck: CardsType

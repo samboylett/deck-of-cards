@@ -1,7 +1,7 @@
 import React from 'react'
 
 import type CardsType from '../../../types/Cards'
-import { Card } from '../Card/Card';
+import { Card } from '../Card/Card'
 
 import { CardContainer } from './CardContainer'
 import { CardsContainer } from './CardsContainer'

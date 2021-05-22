@@ -26,5 +26,5 @@ export function Card({ card, revealed = false }: CardProps): JSX.Element {
                 </CardImageWrapper>
             </CardFace>
         </CardContainer>
-    );
+    )
 }

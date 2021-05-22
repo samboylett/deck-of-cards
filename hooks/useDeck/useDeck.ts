@@ -19,12 +19,12 @@ export interface UseDeckReturn {
 }
 
 export default function useDeck({ initialDeck }: UseDeckArgs): UseDeckProps {
-    const [deck, setDeck] = useState<Cards>(initialDeck);
-    const [hand, setHand] = useState<Cards>([]);
-    const [revealedDeck, setRevealedDeck] = useState<boolean>(false);
+    const [deck, setDeck] = useState<Cards>(initialDeck)
+    const [hand, setHand] = useState<Cards>([])
+    const [revealedDeck, setRevealedDeck] = useState<boolean>(false)
 
-    const toggleReveal = (): void => setRevealedDeck(!revealedDeck);
-    const shuffle = (): void => setDeck(lodashShuffle(deck));
+    const toggleReveal = (): void => setRevealedDeck(!revealedDeck)
+    const shuffle = (): void => setDeck(lodashShuffle(deck))
 
     const draw = (): void => {
         setHand([
@@ -32,13 +32,13 @@ export default function useDeck({ initialDeck }: UseDeckArgs): UseDeckProps {
             deck.slice(-1)[0],
         ])
 
-        setDeck(deck.slice(0, -1));
-    };
+        setDeck(deck.slice(0, -1))
+    }
 
     const reset = (): void => {
-        setDeck(initialDeck);
-        setHand([]);
-    };
+        setDeck(initialDeck)
+        setHand([])
+    }
 
     return {
         deck,

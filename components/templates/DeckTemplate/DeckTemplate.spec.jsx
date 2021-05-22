@@ -132,7 +132,7 @@ describe('DeckTemplate', () => {
         callbackTests([
             ['hide', hideButton, 'onToggleReveal'],
         ])
-    });
+    })
 
     describe('when cards in hand', () => {
         beforeEach(() => {
@@ -163,5 +163,5 @@ describe('DeckTemplate', () => {
         callbackTests([
             ['reset', resetButton, 'onReset'],
         ])
-    });
+    })
 })

@@ -1,7 +1,7 @@
-import React from 'react';
-import { Story, Meta } from '@storybook/react';
+import React from 'react'
+import { Story, Meta } from '@storybook/react'
 
-import { DeckTemplate, DeckTemplateProps } from './DeckTemplate';
+import { DeckTemplate, DeckTemplateProps } from './DeckTemplate'
 import { getDeck } from '../../../helpers/cards/cards'
 
 export default {
@@ -12,27 +12,27 @@ export default {
             argTypesRegex: '^on.*',
         },
     },
-} as Meta;
+} as Meta
 
-const Template: Story<DeckTemplateProps> = (args) => <DeckTemplate {...args} />;
+const Template: Story<DeckTemplateProps> = (args) => <DeckTemplate {...args} />
 
-export const AllInDeck = Template.bind({});
+export const AllInDeck = Template.bind({})
 AllInDeck.args = {
     deck: getDeck(),
     hand: [],
     revealedDeck: false,
-};
+}
 
-export const DeckRevealed = Template.bind({});
+export const DeckRevealed = Template.bind({})
 DeckRevealed.args = {
     deck: getDeck(),
     hand: [],
     revealedDeck: true,
-};
+}
 
-export const AllInHand = Template.bind({});
+export const AllInHand = Template.bind({})
 AllInHand.args = {
     deck: [],
     hand: getDeck(),
     revealedDeck: false,
-};
+}

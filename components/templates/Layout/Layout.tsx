@@ -1,6 +1,6 @@
 import React from 'react'
 
-import LayoutHeader from './LayoutHeader'
+import { LayoutHeader } from './LayoutHeader'
 
 export function Layout({ children }: React.PropsWithChildren<{}>) {
     return (

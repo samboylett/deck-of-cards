@@ -5,35 +5,14 @@ import FlipMove from 'react-flip-move'
 import type CardsType from '../../../types/Cards'
 import { Card } from '../Card/Card';
 
+import { CardContainer } from './CardContainer'
+import { CardsContainer } from './CardsContainer'
+
 export interface CardsProps {
     cards: CardsType
     overlap: string
     revealed: Boolean
 }
-
-const CardsContainer = styled(FlipMove)`
-    display: flex;
-    align-content: center;
-    margin-right: 187px;
-`
-
-interface CardContainerProps {
-    overlap: string
-    revealed: Boolean
-}
-
-const CardContainer = styled.div<CardContainerProps>`
-    width: ${ ({ overlap }) => overlap || '5px' };
-    overflow: visible;
-    transition: width 0.5s ease;
-
-    ${ ({ revealed }) => revealed && `
-        &:hover {
-            width: 100px;
-            max-width: 40vw;
-        }
-    ` }
-`
 
 export function Cards({ cards, overlap, revealed }: CardsProps) {
     return (

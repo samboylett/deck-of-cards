@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 import {
     Container,
     Header,
@@ -7,12 +6,19 @@ import {
     Icon,
 } from 'semantic-ui-react'
 
-import type { ViewProps as DeckTemplateViewProps } from '../DeckTemplateLogic/DeckTemplateLogic'
-
-import type CardType from '../../../../types/Card'
+import type CardsType from '../../../../types/Cards'
 import { Cards } from '../../../ui/Cards/Cards';
 
-export type { DeckTemplateViewProps }
+export interface DeckTemplateViewProps {
+    deck: CardsType
+    hand: CardsType
+    revealedDeck: boolean
+
+    onToggleReveal: () => void
+    onShuffle: () => void
+    onDraw: () => void
+    onReset: () => void
+}
 
 export function DeckTemplateView({
     deck,

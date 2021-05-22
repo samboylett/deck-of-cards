@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const LayoutHeader = styled.header`
+export const LayoutHeader = styled.header`
     margin-bottom: 20px;
     color: #eee;
     background: #111;
@@ -8,5 +8,3 @@ const LayoutHeader = styled.header`
     text-align: center;
     font-size: 2em;
 `
-
-export default LayoutHeader

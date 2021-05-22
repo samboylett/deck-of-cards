@@ -1,29 +1,87 @@
 import React from 'react'
-import { DeckTemplateView } from './DeckTemplateView/DeckTemplateView'
-import useDeck, { UseDeckArgs } from '../../../hooks/useDeck/useDeck'
+import {
+    Container,
+    Header,
+    Button,
+    Icon,
+} from 'semantic-ui-react'
 
-export interface DeckTemplateProps extends UseDeckArgs {}
+import type CardsType from '../../../types/Cards'
+import { Cards } from '../../ui/Cards/Cards';
 
-export function DeckTemplate({ initialDeck }: DeckTemplateProps) {
-    const {
-        deck,
-        hand,
-        revealedDeck,
-        toggleReveal,
-        shuffle,
-        draw,
-        reset,
-    } = useDeck({ initialDeck })
+export interface DeckTemplateProps {
+    deck: CardsType
+    hand: CardsType
+    revealedDeck: boolean
+
+    onToggleReveal: () => void
+    onShuffle: () => void
+    onDraw: () => void
+    onReset: () => void
+}
+
+export function DeckTemplate({
+    deck,
+    hand,
+    revealedDeck,
+    onToggleReveal,
+    onShuffle,
+    onDraw,
+    onReset,
+}: DeckTemplateProps) {
+    const canReset = Boolean(hand.length)
+    const canDraw = Boolean(deck.length)
+    const canShuffle = deck.length === 52
+    const buttonTextDeviceWidth = 800
 
     return (
-        <DeckTemplateView
-            deck={ deck }
-            hand={ hand }
-            revealedDeck={ revealedDeck }
-            onToggleReveal={ toggleReveal }
-            onShuffle={ shuffle }
-            onDraw={ draw }
-            onReset={ reset }
-        />
+        <Container>
+            <Button.Group>
+                <Button onClick={ onToggleReveal }>
+                    <Icon name={ revealedDeck ? 'hide' : 'unhide' } />
+                    { revealedDeck ? 'Hide' : 'Reveal' } Deck
+                </Button>
+
+                <Button
+                    disabled={ !canShuffle }
+                    onClick={ onShuffle }
+                >
+                    <Icon name="shuffle" />
+                    Shuffle
+                </Button>
+
+                <Button
+                    disabled={ !canDraw }
+                    onClick={ onDraw }
+                >
+                    <Icon name="grab" />
+                    Draw
+                </Button>
+
+                <Button
+                    disabled={ !canReset }
+                    onClick={ onReset }
+                >
+                    <Icon name="repeat" />
+                    Reset
+                </Button>
+            </Button.Group>
+
+            <Header as="h2">Your Deck</Header>
+
+            <Cards
+                cards={ deck }
+                revealed={ revealedDeck }
+                overlap="1.5%"
+            />
+
+            <Header as="h2">Your Hand</Header>
+
+            <Cards
+                cards={ hand }
+                revealed={ true }
+                overlap="1.5%"
+            />
+        </Container>
     )
 }

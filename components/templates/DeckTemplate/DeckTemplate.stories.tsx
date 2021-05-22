@@ -3,7 +3,7 @@ import { Story, Meta } from '@storybook/react';
 import styled from 'styled-components';
 
 import { DeckTemplate, DeckTemplateProps } from './DeckTemplate';
-import { getDeck } from '../../../helpers/cards/cards'
+import { getDeck } from '../../../../helpers/cards/cards'
 
 export default {
     title: 'suites/DeckTemplate',
@@ -17,7 +17,23 @@ export default {
 
 const Template: Story<DeckTemplateProps> = (args) => <DeckTemplate {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
-    initialDeck: getDeck(),
+export const AllInDeck = Template.bind({});
+AllInDeck.args = {
+    deck: getDeck(),
+    hand: [],
+    revealedDeck: false,
+};
+
+export const DeckRevealed = Template.bind({});
+DeckRevealed.args = {
+    deck: getDeck(),
+    hand: [],
+    revealedDeck: true,
+};
+
+export const AllInHand = Template.bind({});
+AllInHand.args = {
+    deck: [],
+    hand: getDeck(),
+    revealedDeck: false,
 };

@@ -1,12 +1,12 @@
 import React from 'react'
 import { mount } from 'enzyme'
 
-import { DeckTemplateView } from './DeckTemplateView'
-import { Cards } from '../../../ui/Cards/Cards'
+import { DeckTemplate } from './DeckTemplate'
+import { Cards } from '../../ui/Cards/Cards'
 import { Button } from 'semantic-ui-react'
-import { getDeck } from '../../../../helpers/cards/cards'
+import { getDeck } from '../../../helpers/cards/cards'
 
-describe('DeckTemplateView', () => {
+describe('DeckTemplate', () => {
     let wrapper
     let callbacks
 
@@ -39,7 +39,7 @@ describe('DeckTemplateView', () => {
                 onReset: jest.fn(),
             }
             wrapper = mount(
-                <DeckTemplateView
+                <DeckTemplate
                     deck={ getDeck() }
                     hand={ [] }
                     revealedDeck={ false }
@@ -108,7 +108,7 @@ describe('DeckTemplateView', () => {
                 onReset: jest.fn(),
             }
             wrapper = mount(
-                <DeckTemplateView
+                <DeckTemplate
                     deck={ getDeck() }
                     hand={ [] }
                     revealedDeck={ true }
@@ -143,7 +143,7 @@ describe('DeckTemplateView', () => {
                 onReset: jest.fn(),
             }
             wrapper = mount(
-                <DeckTemplateView
+                <DeckTemplate
                     deck={ [] }
                     hand={ getDeck() }
                     revealedDeck={ false }

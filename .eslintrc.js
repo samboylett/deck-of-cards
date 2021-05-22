@@ -12,6 +12,7 @@ module.exports = {
     extends: ['eslint:recommended'],
     rules: {
         semi: ['error', 'never'],
+        indent: ['error', 4],
     },
     overrides: [
         {

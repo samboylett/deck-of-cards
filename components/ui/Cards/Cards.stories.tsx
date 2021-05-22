@@ -1,8 +1,6 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
-import CardValue from '../../../types/CardValue'
-import CardSuit from '../../../types/CardSuit'
 import { Cards, CardsProps } from './Cards'
 
 export default {
@@ -22,10 +20,10 @@ FullHouse.args = {
     overlap: '50px',
     revealed: true,
     cards: [
-        { suit: CardSuit.Diamonds, value: CardValue.Ace },
-        { suit: CardSuit.Spades, value: CardValue.Ace },
-        { suit: CardSuit.Hearts, value: CardValue.Ace },
-        { suit: CardSuit.Diamonds, value: CardValue.King },
-        { suit: CardSuit.Spades, value: CardValue.King },
+        { suit: 'Diamonds', value: 'Ace' },
+        { suit: 'Spades', value: 'Ace' },
+        { suit: 'Hearts', value: 'Ace' },
+        { suit: 'Diamonds', value: 'King' },
+        { suit: 'Spades', value: 'King' },
     ],
 }

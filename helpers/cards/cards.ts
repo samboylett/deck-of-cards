@@ -1,19 +1,17 @@
 import type Cards from '../../types/Cards'
 import type Card from '../../types/Card'
-import CardSuit from '../../types/CardSuit'
-import CardValue from '../../types/CardValue'
+import { cardSuits } from '../../types/CardSuit'
+import { cardValues } from '../../types/CardValue'
 
 export function getDeck(): Cards {
-    return Object.values(CardValue)
-        .filter(e => isNaN(parseInt(e.toString())))
-        .flatMap(value => {
-            return Object.values(CardSuit)
-                .filter(e => isNaN(parseInt(e.toString())))
-                .map(suit => ({
-                    value: value as unknown as CardValue,
-                    suit: suit as unknown as CardSuit,
+    return cardSuits
+        .flatMap(
+            suit => cardValues
+                .map(value => ({
+                    value,
+                    suit,
                 }))
-        })
+        )
 }
 
 export function getImageAlt(card: Card|null): string {
@@ -27,19 +25,9 @@ export function getImageFileName(card: Card|null): string {
         return 'blue_back.jpg'
     }
 
-    const suitString = isNaN(parseInt(card.suit.toString()))
-        ? card.suit
-        : CardSuit[card.suit]
+    const suitLetter = card.suit.toUpperCase()[0]
 
-    const suitLetter = suitString.toString().toUpperCase()[0]
-
-    const value: number = parseInt(
-        (
-            isNaN(parseInt(card.value.toString()))
-                ? CardValue[card.value]
-                : card.value
-        ).toString()
-    ) + 1
+    const value: number = cardValues.findIndex(v => v === card.value) + 1
 
     const imageValue = {
         1: 'A',

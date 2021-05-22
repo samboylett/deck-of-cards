@@ -2,8 +2,6 @@ import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
 import { CardImage, CardImageProps } from './CardImage'
-import CardValue from '../../../types/CardValue'
-import CardSuit from '../../../types/CardSuit'
 
 export default {
     title: 'suites/CardImage',
@@ -20,79 +18,79 @@ BackOfCard.args = {
 export const AceOfSpades = Template.bind({})
 AceOfSpades.args = {
     card: {
-        suit: CardSuit.Spades,
-        value: CardValue.Ace,
+        suit: 'Spades',
+        value: 'Ace',
     },
 }
 
 export const KingOfSpades = Template.bind({})
 KingOfSpades.args = {
     card: {
-        suit: CardSuit.Spades,
-        value: CardValue.King,
+        suit: 'Spades',
+        value: 'King',
     },
 }
 
 export const TenOfSpades = Template.bind({})
 TenOfSpades.args = {
     card: {
-        suit: CardSuit.Spades,
-        value: CardValue.Ten,
+        suit: 'Spades',
+        value: 'Ten',
     },
 }
 
 export const JackOfSpades = Template.bind({})
 JackOfSpades.args = {
     card: {
-        suit: CardSuit.Spades,
-        value: CardValue.Jack,
+        suit: 'Spades',
+        value: 'Jack',
     },
 }
 
 export const QueenOfSpades = Template.bind({})
 QueenOfSpades.args = {
     card: {
-        suit: CardSuit.Spades,
-        value: CardValue.Queen,
+        suit: 'Spades',
+        value: 'Queen',
     },
 }
 
 export const AceOfHearts = Template.bind({})
 AceOfHearts.args = {
     card: {
-        suit: CardSuit.Hearts,
-        value: CardValue.Ace,
+        suit: 'Hearts',
+        value: 'Ace',
     },
 }
 
 export const KingOfHearts = Template.bind({})
 KingOfHearts.args = {
     card: {
-        suit: CardSuit.Hearts,
-        value: CardValue.King,
+        suit: 'Hearts',
+        value: 'King',
     },
 }
 
 export const TenOfHearts = Template.bind({})
 TenOfHearts.args = {
     card: {
-        suit: CardSuit.Hearts,
-        value: CardValue.Ten,
+        suit: 'Hearts',
+        value: 'Ten',
     },
 }
 
 export const JackOfHearts = Template.bind({})
 JackOfHearts.args = {
     card: {
-        suit: CardSuit.Hearts,
-        value: CardValue.Jack,
+        suit: 'Hearts',
+        value: 'Jack',
     },
 }
 
 export const QueenOfHearts = Template.bind({})
 QueenOfHearts.args = {
     card: {
-        suit: CardSuit.Hearts,
-        value: CardValue.Queen,
+        suit: 'Hearts',
+        value: 'Queen',
     },
 }

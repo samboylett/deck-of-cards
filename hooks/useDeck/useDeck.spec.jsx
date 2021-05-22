@@ -1,21 +1,44 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import { DeckTemplateLogic } from './DeckTemplateLogic'
-import { Cards } from '../../../ui/Cards/Cards'
-import { Button } from 'semantic-ui-react'
-import { getDeck } from '../../../../helpers/cards/cards'
+import useDeck from './useDeck'
+import { getDeck } from '../../helpers/cards/cards'
 
-describe('DeckTemplateLogic', () => {
+describe('useDeck', () => {
     let wrapper
 
-    const View = () => (<div />)
+    const View = () => <div />
+    const Logic = () => {
+        const {
+            deck,
+            hand,
+            revealedDeck,
+            toggleReveal,
+            shuffle,
+            draw,
+            reset,
+        } = useDeck({
+            initialDeck: getDeck(),
+        })
+
+        return (
+            <View
+                deck={ deck }
+                hand={ hand }
+                revealedDeck={ revealedDeck }
+                onToggleReveal={ toggleReveal }
+                onShuffle={ shuffle }
+                onDraw={ draw }
+                onReset={ reset }
+            />
+        )
+    }
 
     const view = () => wrapper.find(View)
 
-    describe('when rendered with a pack of cards', () => {
+    describe('when rendered', () => {
         beforeEach(() => {
-            wrapper = shallow(<DeckTemplateLogic initialDeck={ getDeck() } View={ View } />)
+            wrapper = shallow(<Logic />)
         })
 
         test('renders the view', () => {

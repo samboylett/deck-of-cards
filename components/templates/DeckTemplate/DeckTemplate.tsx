@@ -1,17 +1,29 @@
 import React from 'react'
-import { DeckTemplateLogic } from './DeckTemplateLogic/DeckTemplateLogic'
 import { DeckTemplateView } from './DeckTemplateView/DeckTemplateView'
-import type CardType from '../../../types/Card'
+import useDeck, { UseDeckArgs } from '../../../hooks/useDeck/useDeck'
 
-export interface DeckTemplateProps {
-    initialDeck: Array<CardType>
-}
+export interface DeckTemplateProps extends UseDeckArgs {}
 
 export function DeckTemplate({ initialDeck }: DeckTemplateProps) {
+    const {
+        deck,
+        hand,
+        revealedDeck,
+        toggleReveal,
+        shuffle,
+        draw,
+        reset,
+    } = useDeck({ initialDeck })
+
     return (
-        <DeckTemplateLogic
-            initialDeck={ initialDeck }
-            View={ DeckTemplateView }
+        <DeckTemplateView
+            deck={ deck }
+            hand={ hand }
+            revealedDeck={ revealedDeck }
+            onToggleReveal={ toggleReveal }
+            onShuffle={ shuffle }
+            onDraw={ draw }
+            onReset={ reset }
         />
     )
 }

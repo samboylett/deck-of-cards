@@ -11,7 +11,7 @@ export interface CardProps {
 const CardImageWrapper = styled.div`
     margin: -4px;
     width: 187px;
-    max-width: 10vw;
+    max-width: 50vw;
 `
 
 const CardFace = styled.div`

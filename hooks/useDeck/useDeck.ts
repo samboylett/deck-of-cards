@@ -12,13 +12,13 @@ export interface UseDeckReturn {
     hand: Cards
     revealedDeck: boolean
 
-    onToggleReveal: () => void
-    onShuffle: () => void
-    onDraw: () => void
-    onReset: () => void
+    toggleReveal: () => void
+    shuffle: () => void
+    draw: () => void
+    reset: () => void
 }
 
-export default function useDeck({ initialDeck }: UseDeckArgs): UseDeckProps {
+export default function useDeck({ initialDeck }: UseDeckArgs): UseDeckReturn {
     const [deck, setDeck] = useState<Cards>(initialDeck)
     const [hand, setHand] = useState<Cards>([])
     const [revealedDeck, setRevealedDeck] = useState<boolean>(false)

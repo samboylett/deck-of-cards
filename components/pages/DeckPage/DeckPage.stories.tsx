@@ -1,8 +1,7 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
-import { DeckPage, DeckPageProps } from './DeckPage'
-import { getDeck } from '../../../helpers/cards/cards'
+import { DeckPage } from './DeckPage'
 
 export default {
     title: 'suites/DeckPage',
@@ -14,9 +13,6 @@ export default {
     },
 } as Meta
 
-const Template: Story<DeckPageProps> = (args) => <DeckPage {...args} />
+const Template: Story<Record<string, never>> = (args) => <DeckPage {...args} />
 
 export const Default = Template.bind({})
-Default.args = {
-    initialDeck: getDeck(),
-}

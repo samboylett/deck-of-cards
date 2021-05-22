@@ -2,6 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { Cards } from './Cards'
 import { Card } from '../Card/Card'
+import { CardContainer } from './CardContainer'
 
 describe('Cards', () => {
     let wrapper
@@ -40,6 +41,23 @@ describe('Cards', () => {
 
         test.each([0, 1, 2])('passes the card at index %d to the component at the same index', (index) => {
             expect(wrapper.find(Card).get(index).props.card).toEqual(cards[index])
+        })
+    })
+
+    describe('when rendering deck revealed', () => {
+        let cards
+
+        beforeEach(() => {
+            cards = [
+                { suit: 'Spades', value: 'Ace' },
+                { suit: 'Hearts', value: 'King' },
+                { suit: 'Diamonds', value: 'Nine' },
+            ]
+            wrapper = shallow(<Cards cards={ cards } revealed />)
+        })
+
+        test.each([0, 1, 2])('renders the CardContainer at index %d with revealed set to true', index => {
+            expect(wrapper.find(CardContainer).get(index).props.revealed).toBe(true)
         })
     })
 })

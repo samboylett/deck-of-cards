@@ -16,6 +16,12 @@ export function getDeck(): Cards {
         })
 }
 
+export function getImageAlt(card: Card|null) {
+    return card
+        ? `${ card.value } of ${ card.suit }`
+        : 'Back of card'
+}
+
 export function getImageFileName(card: Card|null) {
     if (!card) {
         return 'blue_back.jpg';

@@ -3,7 +3,7 @@ import { mount } from 'enzyme'
 
 import { DeckTemplate } from './DeckTemplate'
 import { Cards } from '../../ui/Cards/Cards'
-import { Button } from 'semantic-ui-react'
+import { Button, Icon } from 'semantic-ui-react'
 import { getDeck } from '../../../helpers/cards/cards'
 
 describe('DeckTemplate', () => {

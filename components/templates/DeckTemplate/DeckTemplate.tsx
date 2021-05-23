@@ -8,6 +8,7 @@ import {
 
 import type CardsType from '../../../types/Cards'
 import { Cards } from '../../ui/Cards/Cards'
+import { MediaQuery } from '../../ui/MediaQuery/MediaQuery'
 
 export interface DeckTemplateProps {
     deck: CardsType
@@ -35,36 +36,70 @@ export function DeckTemplate({
 
     return (
         <Container>
-            <Button.Group>
-                <Button onClick={ onToggleReveal }>
-                    <Icon name={ revealedDeck ? 'hide' : 'unhide' } />
-                    { revealedDeck ? 'Hide' : 'Reveal' } Deck
-                </Button>
+            <MediaQuery minWidth={ 800 }>
+                <Button.Group>
+                    <Button onClick={ onToggleReveal }>
+                        <Icon name={ revealedDeck ? 'hide' : 'unhide' } />
+                        { revealedDeck ? 'Hide' : 'Reveal' } Deck
+                    </Button>
 
-                <Button
-                    disabled={ !canShuffle }
-                    onClick={ onShuffle }
-                >
-                    <Icon name="shuffle" />
-                    Shuffle
-                </Button>
+                    <Button
+                        disabled={ !canShuffle }
+                        onClick={ onShuffle }
+                    >
+                        <Icon name="shuffle" />
+                        Shuffle
+                    </Button>
 
-                <Button
-                    disabled={ !canDraw }
-                    onClick={ onDraw }
-                >
-                    <Icon name="grab" />
-                    Draw
-                </Button>
+                    <Button
+                        disabled={ !canDraw }
+                        onClick={ onDraw }
+                    >
+                        <Icon name="grab" />
+                        Draw
+                    </Button>
 
-                <Button
-                    disabled={ !canReset }
-                    onClick={ onReset }
-                >
-                    <Icon name="repeat" />
-                    Reset
-                </Button>
-            </Button.Group>
+                    <Button
+                        disabled={ !canReset }
+                        onClick={ onReset }
+                    >
+                        <Icon name="repeat" />
+                        Reset
+                    </Button>
+                </Button.Group>
+            </MediaQuery>
+
+            <MediaQuery maxWidth={ 799 }>
+                <Button.Group>
+                    <Button onClick={ onToggleReveal } icon>
+                        <Icon name={ revealedDeck ? 'hide' : 'unhide' } />
+                    </Button>
+
+                    <Button
+                        disabled={ !canShuffle }
+                        onClick={ onShuffle }
+                        icon
+                    >
+                        <Icon name="shuffle" />
+                    </Button>
+
+                    <Button
+                        disabled={ !canDraw }
+                        onClick={ onDraw }
+                        icon
+                    >
+                        <Icon name="grab" />
+                    </Button>
+
+                    <Button
+                        disabled={ !canReset }
+                        onClick={ onReset }
+                        icon
+                    >
+                        <Icon name="repeat" />
+                    </Button>
+                </Button.Group>
+            </MediaQuery>
 
             <Header as="h2">Your Deck</Header>
 

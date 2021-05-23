@@ -12,7 +12,11 @@ export interface CardsProps {
     revealed: boolean
 }
 
-export function Cards({ cards, overlap, revealed }: CardsProps): JSX.Element {
+export function Cards({
+    cards,
+    overlap = '5px',
+    revealed,
+}: CardsProps): JSX.Element {
     return (
         <CardsContainer>
             {

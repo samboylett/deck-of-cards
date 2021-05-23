@@ -21,6 +21,20 @@ describe('Cards', () => {
                 expect(cardWrapper.prop('card')).toBe(null)
             })
         })
+
+        test('passes default overlap of 5px to CardContainer', () => {
+            expect(wrapper.find(CardContainer).get(0).props.overlap).toEqual('5px')
+        })
+    })
+
+    describe('when setting overlap prop', () => {
+        beforeEach(() => {
+            wrapper = shallow(<Cards cards={ Array(1).fill(null) } overlap="100px" />)
+        })
+
+        test('passes overlap to CardContainer', () => {
+            expect(wrapper.find(CardContainer).get(0).props.overlap).toEqual('100px')
+        })
     })
 
     describe('when rendering a hand', () => {

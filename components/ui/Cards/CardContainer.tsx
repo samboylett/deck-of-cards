@@ -6,7 +6,7 @@ interface CardContainerProps {
 }
 
 export const CardContainer = styled.div<CardContainerProps>`
-    width: ${ ({ overlap }) => overlap || '5px' };
+    width: ${ ({ overlap }) => overlap };
     overflow: visible;
     transition: width 0.5s ease;
 

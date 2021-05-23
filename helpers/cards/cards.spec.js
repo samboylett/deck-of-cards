@@ -1,6 +1,64 @@
-import { getImageURLPath, getImageAlt } from './cards'
+import {
+    getImageURLPath,
+    getImageAlt,
+    loadDeck,
+} from './cards'
 
 describe('helpers/cards', () => {
+    describe('loadDeck', () => {
+        test('is a function', () => {
+            expect(loadDeck).toEqual(expect.any(Function))
+        })
+
+        describe('when called', () => {
+            let retVal
+            let onloads
+            let onerrors
+
+            beforeEach(() => {
+                onloads = []
+                onerrors = []
+
+                Object.defineProperty(global.Image.prototype, 'src', {
+                    set() {
+                        onloads.push(() => this.onload())
+                        onerrors.push(() => this.onerror())
+                    },
+                })
+
+                retVal = loadDeck()
+            })
+
+            test('returns a promise', () => {
+                expect(retVal).toEqual(expect.any(Promise))
+            })
+
+            test('creates 53 image loaders', () => {
+                expect(onloads).toHaveLength(53)
+            })
+
+            describe('when all image loading resolves', () => {
+                beforeEach(() => {
+                    onloads.forEach(fn => fn())
+                })
+
+                test('returned promise resolves', async () => {
+                    await expect(retVal).resolves.toEqual(expect.any(Array))
+                })
+            })
+
+            describe('when any image loading errors', () => {
+                beforeEach(() => {
+                    onerrors[0]()
+                })
+
+                test('returned promise rejects', async () => {
+                    await expect(retVal).rejects.toEqual(undefined)
+                })
+            })
+        })
+    })
+
     describe('getImageURLPath', () => {
         test('is a function', () => {
             expect(getImageURLPath).toEqual(expect.any(Function))

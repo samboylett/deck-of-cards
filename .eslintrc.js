@@ -54,7 +54,7 @@ module.exports = {
             },
         },
         {
-            files: ['**/*.spec.*'],
+            files: ['**/*.spec.*', '__mocks__/**/*'],
             env: {
                 jest: true,
             },

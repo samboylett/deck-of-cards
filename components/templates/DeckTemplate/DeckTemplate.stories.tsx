@@ -36,3 +36,19 @@ AllInHand.args = {
     hand: getDeck(),
     revealedDeck: false,
 }
+
+export const Loading = Template.bind({})
+Loading.args = {
+    deck: getDeck(),
+    hand: [],
+    revealedDeck: false,
+    loading: true,
+}
+
+export const Errored = Template.bind({})
+Errored.args = {
+    deck: getDeck(),
+    hand: [],
+    revealedDeck: false,
+    errored: true,
+}

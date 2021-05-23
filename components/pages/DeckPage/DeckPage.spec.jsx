@@ -1,7 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme'
 import { useAsync } from 'react-async'
-import { Loader, Message } from 'semantic-ui-react'
 
 import { DeckPage } from './DeckPage'
 import { DeckTemplate } from '../../templates/DeckTemplate/DeckTemplate'
@@ -23,6 +22,14 @@ describe('DeckPage', () => {
         test('passes default deck to template', () => {
             expect(wrapper.find(DeckTemplate).prop('deck')).toEqual(getDeck())
         })
+
+        test('sets template to loaded', () => {
+            expect(wrapper.find(DeckTemplate).prop('loading')).toBeFalsy()
+        })
+
+        test('sets template to unerrored', () => {
+            expect(wrapper.find(DeckTemplate).prop('errored')).toBeFalsy()
+        })
     })
 
     describe('when loading', () => {
@@ -31,8 +38,8 @@ describe('DeckPage', () => {
             wrapper = mount(<DeckPage />)
         })
 
-        test('renders a Loader', () => {
-            expect(wrapper.find(Loader)).toHaveLength(1)
+        test('sets template to loading', () => {
+            expect(wrapper.find(DeckTemplate).prop('loading')).toEqual(true)
         })
     })
 
@@ -42,8 +49,8 @@ describe('DeckPage', () => {
             wrapper = mount(<DeckPage />)
         })
 
-        test('renders a Message', () => {
-            expect(wrapper.find(Message)).toHaveLength(1)
+        test('sets template to errored', () => {
+            expect(wrapper.find(DeckTemplate).prop('errored')).toEqual(true)
         })
     })
 })

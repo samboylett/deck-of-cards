@@ -3,7 +3,7 @@ import { mount } from 'enzyme'
 
 import { DeckTemplate } from './DeckTemplate'
 import { Cards } from '../../ui/Cards/Cards'
-import { Button } from 'semantic-ui-react'
+import { Button, Message, Loader } from 'semantic-ui-react'
 import { getDeck } from '../../../helpers/cards/cards'
 
 describe('DeckTemplate', () => {
@@ -163,5 +163,39 @@ describe('DeckTemplate', () => {
         callbackTests([
             ['reset', resetButton, 'onReset'],
         ])
+    })
+
+    describe('when loading', () => {
+        beforeEach(() => {
+            wrapper = mount(
+                <DeckTemplate
+                    deck={ [] }
+                    hand={ getDeck() }
+                    revealedDeck={ false }
+                    loading
+                />
+            )
+        })
+
+        test('renders a Loader', () => {
+            expect(wrapper.find(Loader)).toHaveLength(1)
+        })
+    })
+
+    describe('when errored', () => {
+        beforeEach(() => {
+            wrapper = mount(
+                <DeckTemplate
+                    deck={ [] }
+                    hand={ getDeck() }
+                    revealedDeck={ false }
+                    errored
+                />
+            )
+        })
+
+        test('renders a Message', () => {
+            expect(wrapper.find(Message)).toHaveLength(1)
+        })
     })
 })

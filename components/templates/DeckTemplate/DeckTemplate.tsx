@@ -4,6 +4,9 @@ import {
     Header,
     Button,
     Icon,
+    Dimmer,
+    Loader,
+    Message,
 } from 'semantic-ui-react'
 
 import type CardsType from '../../../types/Cards'
@@ -14,6 +17,8 @@ export interface DeckTemplateProps {
     deck: CardsType
     hand: CardsType
     revealedDeck: boolean
+    loading: boolean
+    errored: boolean
 
     onToggleReveal: () => void
     onShuffle: () => void
@@ -25,11 +30,33 @@ export function DeckTemplate({
     deck,
     hand,
     revealedDeck,
+    loading,
+    errored,
+
     onToggleReveal,
     onShuffle,
     onDraw,
     onReset,
 }: DeckTemplateProps): JSX.Element {
+    if (loading) {
+        return (
+            <Dimmer active inverted>
+                <Loader inverted content="Loading Deck" />
+            </Dimmer>
+        )
+    }
+
+    if (errored) {
+        return (
+            <Container>
+                <Message negative>
+                    <Message.Header>Something went wrong!</Message.Header>
+                    <p>The deck of cards could not be loaded, sorry.</p>
+                </Message>
+            </Container>
+        )
+    }
+
     const canReset = Boolean(hand.length)
     const canDraw = Boolean(deck.length)
     const canShuffle = deck.length === 52

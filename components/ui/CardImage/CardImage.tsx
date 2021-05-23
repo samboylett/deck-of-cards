@@ -15,6 +15,7 @@ export function CardImage({ card }: CardImageProps): JSX.Element {
             alt={ getImageAlt(card) }
             width={187}
             height={286}
+            unoptimized
         />
     )
 }

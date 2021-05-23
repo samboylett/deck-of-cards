@@ -55,6 +55,9 @@ export function getImageURLPath(card: Card|null): string {
     return `/cards/${ getImageFileName(card) }`
 }
 
+/**
+ * Pre-load all the deck images.
+ */
 export function loadDeck() {
     return Promise.all(
         [

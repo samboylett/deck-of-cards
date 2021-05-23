@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
 export interface MediaQueryProps {
-    minWidth: number|undefined
-    maxWidth: number|undefined
+    minWidth?: number
+    maxWidth?: number
 }
 
 export const MediaQuery = styled.div<MediaQueryProps>`

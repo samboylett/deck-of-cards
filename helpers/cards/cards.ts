@@ -58,16 +58,16 @@ export function getImageURLPath(card: Card|null): string {
 /**
  * Pre-load all the deck images.
  */
-export function loadDeck() {
+export function loadDeck(): Promise<Array<unknown>> {
     return Promise.all(
         [
             null,
             ...getDeck(),
         ].map(card => new Promise(resolve => {
-                const path = getImageURLPath(card)
-                const image = new Image()
-                image.src = path
-                image.onload = resolve
+            const path = getImageURLPath(card)
+            const image = new Image()
+            image.src = path
+            image.onload = resolve
         }))
     )
 }

@@ -3,6 +3,9 @@ import type Card from '../../types/Card'
 import { cardSuits } from '../../types/CardSuit'
 import { cardValues } from '../../types/CardValue'
 
+/**
+ * Generate an ordered deck of cards.
+ */
 export function getDeck(): Cards {
     return cardSuits
         .flatMap(
@@ -14,12 +17,18 @@ export function getDeck(): Cards {
         )
 }
 
+/**
+ * Get a cards image alt text.
+ */
 export function getImageAlt(card: Card|null): string {
     return card
         ? `${ card.value } of ${ card.suit }`
         : 'Back of card'
 }
 
+/**
+ * Get a cards image file name.
+ */
 export function getImageFileName(card: Card|null): string {
     if (!card) {
         return 'blue_back.jpg'
@@ -39,6 +48,23 @@ export function getImageFileName(card: Card|null): string {
     return `${ imageValue }${ suitLetter }.jpg`
 }
 
+/**
+ * Get a cards image URL path.
+ */
 export function getImageURLPath(card: Card|null): string {
     return `/cards/${ getImageFileName(card) }`
+}
+
+export function loadDeck() {
+    return Promise.all(
+        [
+            null,
+            ...getDeck(),
+        ].map(card => new Promise(resolve => {
+                const path = getImageURLPath(card)
+                const image = new Image()
+                image.src = path
+                image.onload = resolve
+        }))
+    )
 }

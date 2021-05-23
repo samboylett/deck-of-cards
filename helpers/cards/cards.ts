@@ -63,11 +63,12 @@ export function loadDeck(): Promise<Array<unknown>> {
         [
             null,
             ...getDeck(),
-        ].map(card => new Promise(resolve => {
+        ].map(card => new Promise((resolve, reject) => {
             const path = getImageURLPath(card)
             const image = new Image()
             image.src = path
             image.onload = resolve
+            image.onerror = reject
         }))
     )
 }
